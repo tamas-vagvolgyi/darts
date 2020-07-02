@@ -3,9 +3,9 @@ class Player:
     def_points = 501
     wins = 0
 
-    def __init__(self, name, points = def_points):
+    def __init__(self, name):
         self.name = name
-        self.points = points
+        self.points = def_points
         self.info()
 
     def info(self):
