@@ -1,11 +1,10 @@
 class Player:
 
-    def_points = 501
     wins = 0
 
-    def __init__(self, name):
+    def __init__(self, name, points):
         self.name = name
-        self.points = def_points
+        self.points = points
         self.info()
 
     def info(self):
@@ -17,8 +16,8 @@ class Player:
     def set_points(self, value):
         self.points = int(value)
 
-    def reset(self):
-        self.set_points(501)
+    def reset(self, points):
+        self.set_points(points)
         self.is_winner = False
 
     def is_winner(self):
@@ -81,12 +80,13 @@ class Player:
 
 class Game:
 
-    def __init__(self):
+    def __init__(self, points):
         numplayers = int(input("How many players will be playing?: "))
+        self.points = points
         self.players = []
         for i in range(numplayers):
             playername = input("What's the name of the " + str(i+1) + ". player?: ")
-            self.players.append(Player(playername))
+            self.players.append(Player(playername, points))
         self.play()
 
     def play(self):
@@ -101,7 +101,7 @@ class Game:
         again = input("Do you want to play again? (Y/N) : ").lower()
         if again == "y":
             for player in self.players:
-                player.reset()
+                player.reset(self.points)
             self.play()
         else:
             print("Thank you for playing with us today!")
@@ -111,7 +111,7 @@ class Game:
         for player in self.players:
             print(player.name + ": " + str(player.get_score()))
 
-game = Game()
+game = Game(501)
 
 
 """
