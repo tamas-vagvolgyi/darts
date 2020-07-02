@@ -28,16 +28,16 @@ class Player:
 
     def throw(self):
         pts_before_round = self.points
-        throws = 3
+        throw = 0
 
-        for i in range(throws):
-
+        while throw < 3:
             # The value must start with s, d, t and then the number
             value = input("Value thrown by " + self.name +": ").lower()
             if value == 'q':
                 print("Bye!")
                 exit()
             elif value == '0':
+                throw += 1
                 continue
 
             multiplier = value[0]
@@ -50,6 +50,7 @@ class Player:
                 multi = 3
             else:
                 print("Please give a valid value")
+                continue
 
             number = int(value[1:])
             if number <= 20:
@@ -57,6 +58,7 @@ class Player:
                     pass
             else:
                 print("Please give a valid value")
+                continue
 
             value = number*multi
 
@@ -73,6 +75,7 @@ class Player:
                     self.is_winner = True
                     self.wins += 1
                     break
+            throw += 1
 
         self.info()
 
@@ -116,7 +119,6 @@ game = Game(501)
 
 """
 Todo:
-- While loop
 - Double exit
 - Saving things to json
 """
