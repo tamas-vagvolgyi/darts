@@ -53,7 +53,9 @@ class Player:
                 continue
 
             number = int(value[1:])
-            if number <= 20:
+            if number == 25:
+                pass
+            elif number <= 20:
                 if number > 0:
                     pass
                 else:
@@ -64,9 +66,9 @@ class Player:
                 continue
 
             value = number*multi
-
             if value > self.points:
                 self.points = pts_before_round
+                break
             else:
                 self.points -= value
                 if self.points == 1:
@@ -122,4 +124,4 @@ class Game:
         for player in self.players:
             print(player.name + ": " + str(player.get_score()))
 
-game = Game(501)
+game = Game(101)
