@@ -31,7 +31,7 @@ class Player:
         throw = 0
 
         while throw < 3:
-            # The value must start with s, d, t and then the number
+            # The value must start with s for single, d for double, t for treble and then the number, e.g.: s20, d16, t19
             value = input("Value thrown by " + self.name +": ").lower()
             if value == 'q':
                 print("Bye!")
@@ -56,6 +56,9 @@ class Player:
             if number <= 20:
                 if number > 0:
                     pass
+                else:
+                    print("Please give a valid value")
+                    continue
             else:
                 print("Please give a valid value")
                 continue
@@ -67,14 +70,19 @@ class Player:
             else:
                 self.points -= value
                 if self.points == 1:
-                    self.points = pts_before_round
                     print(self.name + " threw too much...")
+                    self.points = pts_before_round
                     break
                 elif self.points == 0:
-                    print(self.name + " is the winner!")
-                    self.is_winner = True
-                    self.wins += 1
-                    break
+                    if multi == 2:
+                        print(self.name + " is the winner!")
+                        self.is_winner = True
+                        self.wins += 1
+                        break
+                    else:
+                        print(self.name + " didn't finish with a Double")
+                        self.points = pts_before_round
+                        break
             throw += 1
 
         self.info()
