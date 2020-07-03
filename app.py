@@ -123,10 +123,3 @@ class Game:
             print(player.name + ": " + str(player.get_score()))
 
 game = Game(501)
-
-
-"""
-Todo:
-- Double exit
-- Saving things to json
-"""
